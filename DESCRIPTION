@@ -14,14 +14,15 @@ efficiency through the R package `Rcpp`.
 Depends: R (>= 4.2.2)
 License: GPL (>= 3)
 Encoding: UTF-8
-Imports: survival,
-    fastcmprsk,
-    crrSC,
-    MASS, 
-    mcreplicate, 
-    foreach, 
-    ggplot2, 
-    stabledist
+Imports: evd,
+    MASS,
+    ggplot2,
+    BDgraph, 
+    Rcpp, 
+    microbenchmark, 
+    rbenchmark, 
+    RcppArmadillo,
+    coda
 RoxygenNote: 7.2.3
 Suggests: 
     knitr,
