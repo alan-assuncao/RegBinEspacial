@@ -5,10 +5,10 @@ Authors@R: c(
               person("Alan", "Assunção", role = c("aut", "cre"), email = "sa.alan507@gmail.com"),
               person("Ricardo", "Ehlers", role = c("aut"), email = "ehlers@icmc.usp.br")
               )
-Description: The clustered competing risks regression model assesses the marginal effects of covariates
-    on the respective cumulative incidence functions, while accommodating the correlation induced due to 
-    clustering. An implementation of the 'forward-backward scan' algorithm for large clustered competing 
-    risks datasets is provided. 
+Description: `RegBinEspacial` implements a spatial binary regression model for area data, using a class of 
+flexible link functions that include an extra shape parameter that can conveniently adapt to the degree of 
+asymmetry present in the data. The codes provided were written in R and also in C++ to optimize computational 
+efficiency through the R package `Rcpp`. 
     For further information, see (Defor E, Chiou S, Srivastava S and Bandyopadhyay D (2024) doi:<0.1.xx>) and
     and (Zhou B, Fine J, Latouche A and Labopin M (2011) doi:<10.1093/biostatistics/kxr032>). 
 Depends: R (>= 4.2.2)
