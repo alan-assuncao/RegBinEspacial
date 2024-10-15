@@ -18,10 +18,10 @@ Imports: evd,
     ggplot2,
     BDgraph, 
     Rcpp, 
-    microbenchmark, 
-    rbenchmark, 
     RcppArmadillo,
     coda
+Suggests:microbenchmark,
+         rbenchmark, 
 RoxygenNote: 7.2.3
 Suggests: 
     knitr,
