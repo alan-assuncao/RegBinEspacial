@@ -9,8 +9,7 @@ Description: `RegBinEspacial` implements a spatial binary regression model for a
 flexible link functions that include an extra shape parameter that can conveniently adapt to the degree of 
 asymmetry present in the data. The codes provided were written in R and also in C++ to optimize computational 
 efficiency through the R package `Rcpp`. 
-    For further information, see (Defor E, Chiou S, Srivastava S and Bandyopadhyay D (2024) doi:<0.1.xx>) and
-    and (Zhou B, Fine J, Latouche A and Labopin M (2011) doi:<10.1093/biostatistics/kxr032>). 
+    For further information, see (Assunção A, Ehlers Ricardo and Bandyopadhyay D (2024) doi:<0.1.xx>).
 Depends: R (>= 4.2.2)
 License: GPL (>= 3)
 Encoding: UTF-8
