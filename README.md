@@ -144,8 +144,6 @@ tempo=system.time(
           
           B=hmcCpp(theta[r-1,],SS=1,burn=1,lag=1, epsilon=0.1, LF=22,epsphi = 0.001, Lphi = 22, M=G., y=Y,X=X, Omega=Omegacpp)
           
-          theta_curr = B$theta
-          
           theta[r,] = B$theta
           
           #  rbetaphi = rbetaphi + 2*B$"taxa-aceitacao phi"
