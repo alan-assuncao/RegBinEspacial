@@ -23,7 +23,7 @@ You can install the development version of `RegBinEspacial` from [GitHub](https:
 devtools::install_github(repo = " ")
 ```
 
-## Status of development
+## Example
 
 O código providenciado aqui está sendo fornecido apenas para fins de pesqusia
 
