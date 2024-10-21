@@ -189,7 +189,7 @@ phipost = post[,((2+pcov):(1+pcov+n*m))]
 # [1] -0.6872023
 # [1] 0.7101682
 #>   exp(mean(deltapost))
-[1] 1.958251
+# [1] 1.958251
 ```
 
 ## Documentation
