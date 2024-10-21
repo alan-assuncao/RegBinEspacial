@@ -27,6 +27,171 @@ devtools::install_github(repo = " ")
 
 O código providenciado aqui está sendo fornecido apenas para fins de pesqusia
 
+```R
+rm(list=ls())# clear PC memory
+
+###################################################################################
+# Required packages
+###################################################################################
+
+library('BDgraph')	# to sample from G-wishart
+library ('Rcpp')
+library ('microbenchmark')
+library ('rbenchmark')
+library ('RcppArmadillo')
+
+# R functions 
+
+source("/home/alan/Documentos/TESE-ALAN/scripts-atualizados/kappa-algoritmo-troca.R")
+
+source("/home/alan/Documentos/TESE-ALAN/Artigo-regressao-binaria-espacial/ligacao-Cauchy-Potencia/funcoes-cauchy-potencia-R.R")
+source("/home/alan/Documentos/TESE-ALAN/scripts-atualizados/funcoes-medidas.R")
+source("/home/alan/Documentos/TESE-ALAN/scripts-atualizados/funcoes-auxiliares.R")
+
+#  Rcpp/C++ functions
+
+sourceCpp("/home/alan/Documentos/TESE-ALAN/Artigo-regressao-binaria-espacial/ligacao-Cauchy-Potencia/hmcCpp-cauchy-potencia.cpp")
+
+#################################################### Example of use #######################################
+
+n = 100 # sample size
+
+m = 60 # sites
+
+beta1 = -0.7 ; beta2 = 0.7 # coefficient values
+
+lambda = 2 # lambda value
+delta=log(lambda)
+
+set.seed(1020304050)
+W1 = graph.sim( p = m, graph = "random", vis = FALSE,rewire = 0.05 ) # Building an adjacency matrix
+plot(W1)
+
+W = matrix(W1,m,m) # adjacency matrix for random graphical structure
+
+W_esparsa =W_sparsa(W) # calculating quantities for the sparse adjacency matrix W
+
+D = diag(as.vector(W_esparsa$D_sparse)) # diagonal matrix with neighbors | random grid
+
+rho = 0.9 # spatial correlation coefficient
+
+#################################### HMC SETTINGS AND PREPARING THE SIMULATION #############################
+
+SS = 1900       # chain size at the end of simulations
+burn = 100      # burn-in
+lagg =1         # lagg
+
+SS. = (SS + burn)*lagg         # chain size
+idx = seq(burn * lagg + 1, SS., by = lagg)
+
+betainit = c(-0.3,0.3)
+deltainit = -0.1
+
+rbetadelta = 0
+
+x1 = rnorm(n)
+x2 = rnorm(n)
+      
+X=cbind(x1,x2)
+      
+pcov =length(X[1,]) # amount of covariates
+      
+betax=beta1*x1+beta2*x2
+      
+kap = m # kappa fixed for simulations
+      
+Omega_sim=rgwish( n = 1, adj =W, b = kap, D = S, threshold = 1e-8 ) # generating the precision matrix
+      
+Y=array(NA,c(n,m))
+phi=array(NA,c(n,m))
+      
+for(k in 1:n)
+{
+  phi[k,] = mvrnorm(1, mu = rep(0, times = m), Sigma = solve(Omega_sim))
+
+ p = F((betax[k]+phi[k,]),delta)
+        
+ Y[k,] = rbinom(m, size=1, prob=p)
+}
+     
+para = c(deltainit,betainit)
+     
+map = optim(para, lpostbetadelta, gradbetadelta,phi, y = Y, X=X, control = list(fnscale = -1), method = 'BFGS', hessian = TRUE); map
+      
+G. = G(theta=c(round(map$par,2),phi),y=Y,X=X) # Fisher information matrix of the model
+      
+theta.current =c(map$par,phi)
+      
+D. <- length(theta.current)
+      
+theta      <- matrix( , SS., D.)
+theta[1, ] <- theta.current  
+      
+######################################### INITIAL VALUES FOR PARAMETER CHAINS ######################
+      
+kgw = (m+n)
+Sgw = S
+      
+Omegacpp = Omega_sim
+
+rbetadelta = 0
+      
+################################################## SAMPLING PARAMETERS ##############################################################
+tempo=system.time(
+        for(r in 2:SS.) {
+          
+          # amostrando beta, xi e phi i=1,...,n
+          
+          B=hmcCpp(theta[r-1,],SS=1,burn=1,lag=1, epsilon=0.1, LF=22,epsphi = 0.001, Lphi = 22, M=G., y=Y,X=X, Omega=Omegacpp)
+          
+          theta_curr = B$theta
+          
+          theta[r,] = B$theta
+          
+          #  rbetaphi = rbetaphi + 2*B$"taxa-aceitacao phi"
+          
+          rbetadelta = rbetadelta + 2*B$"taxa-aceitacao beta-delta"
+          
+          phimc = matrix(theta[r,(2+pcov):(1+pcov+n*m)],nrow=n,ncol=m)  # spatial effects
+          
+          for (q in 1:n)
+          {            
+            Sgw = Sgw + phimc[q,]%*%t(phimc[q,]) # log-priori de phi  (implementing it this way is equivalent to calculating the trace of
+# matrix multiplication)
+          }
+          
+          Sgw = S+Sgw
+          
+          # sampling Omega
+          
+          Omegacpp=rgwish( n = 1, adj =W, b = kgw, D = Sgw, threshold = 1e-8 ) # generating the precision matrix
+          
+          print(r)
+          
+          Sgw = 0
+        }         
+)
+
+ theta = theta[idx, ]
+      
+post = theta
+      
+deltapost = post[,1]
+      
+lambdapost = exp(deltapost)
+      
+betapost = post[,(2:(pcov+1))]
+      
+phipost = post[,((2+pcov):(1+pcov+n*m))]
+      
+#>   mean(deltapost);mean(betapost[,1]);mean(betapost[,2])
+# [1] 0.672052
+# [1] -0.6872023
+# [1] 0.7101682
+#>   exp(mean(deltapost))
+[1] 1.958251
+```
+
 ## Documentation
 
 ## Usage
