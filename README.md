@@ -20,7 +20,7 @@ The vignete is available  [here](https://github.com/alan-assuncao) (I need to ch
 You can install the development version of `RegBinEspacial` from [GitHub](https://github.com/alan-assuncao/RegBinEspacial) with:
 
 ```R
-devtools::install_github(repo = " ")
+devtools::install_github(repo = "https://github.com/alan-assuncao/RegBinEspacial")
 ```
 
 ## Example
