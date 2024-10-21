@@ -1,29 +1,19 @@
 Package: SpatialBinReg
+Type: Package
 Title: Bayesian inference under sparsity for spatial binary regression models
-Version: 0.0.0
-Authors@R: c(
-              person("Alan", "Assunção", role = c("aut", "cre"), email = "sa.alan507@gmail.com"),
-              person("Ricardo", "Ehlers", role = c("aut"), email = "ehlers@icmc.usp.br")
-              )
-Description: `RegBinEspacial` implements a spatial binary regression model for area data, using a class of 
-flexible link functions that include an extra shape parameter that can conveniently adapt to the degree of 
-asymmetry present in the data. The codes provided were written in R and also in C++ to optimize computational 
-efficiency through the R package `Rcpp`. 
-    For further information, see (Assunção A, Ehlers Ricardo and Bandyopadhyay D (2024) doi:<0.1.xx>).
-Depends: R (>= 4.2.2)
-License: GPL (>= 3)
-Encoding: UTF-8
-Imports: evd,
-    MASS,
-    ggplot2,
-    BDgraph, 
-    Rcpp, 
-    RcppArmadillo,
-    coda
-Suggests:microbenchmark,
-         rbenchmark, 
-RoxygenNote: 7.2.3
-Suggests: 
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
+Version: 1.0
+Date: 2024-10-19
+Authors@R: c(person("Alan", "Assuncao", role = c("aut", "cre"), email = "sa.alan507@gmail.com"),
+              person("Ricardo", "Ehlers", role = c("aut"), email = "ehlers@icmc.usp.br"))
+Author: Alan Assuncao [aut, cre],
+  Ricardo Ehlers [aut]
+Maintainer: Alan Assuncao <sa.alan507@gmail.com>
+Depends: R (>= 4.2.2), nlme
+Description: RegBinEspacial implements a spatial binary regression model for area data, using a class of 
+     flexible link functions that include an extra shape parameter that can conveniently adapt to the degree of 
+     asymmetry present in the data. The codes provided were written in R and also in C++ to optimize computational 
+     efficiency through the R package Rcpp. 
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.13)
+LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 7.3.2
