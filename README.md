@@ -1,4 +1,4 @@
-# `SpatialBinReg`: Pacote R para análise de regressão binária espacial sob esparsidade utilizando funções de ligação flexíveis.
+# `SpatialBinReg`: R package for spatial binary regression analysis under sparsity using flexible link functions.
 
 ## Overview
 
