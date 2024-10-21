@@ -14,7 +14,7 @@ where $F$ denotes a continuous cumulative distribution function (cdf), which can
 
 We will be using the class of Power and Power Reverse link functions presented in the work of Bazán et al. (2017) to deal with unbalanced data scenarios.
 
-The vignete is available  [here](https://github.com/alan-assuncao) (preciso mudar o link)
+The vignete is available  [here](https://github.com/alan-assuncao) (I need to change the link)
 
 ## Instalation
 You can install the development version of `RegBinEspacial` from [GitHub](https://github.com/alan-assuncao/RegBinEspacial) with:
@@ -25,7 +25,7 @@ devtools::install_github(repo = " ")
 
 ## Example
 
-O código providenciado aqui está sendo fornecido apenas para fins de pesqusia
+The code provided here is provided for research purposes only. In the following, we simulate data from our model under the Cauchy Power link function and illustrate the use of our sampling method for the model parameters.
 
 ```R
 rm(list=ls())# clear PC memory
@@ -193,8 +193,6 @@ phipost = post[,((2+pcov):(1+pcov+n*m))]
 ```
 
 ## Documentation
-
-## Usage
 
 ## Reference
 * Alves, J. S., Bazán, J. L. and Arellano-Valle, R. B. (2023) Flexible cloglog links for binomial regression models as
