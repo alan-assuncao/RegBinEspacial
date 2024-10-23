@@ -71,6 +71,7 @@ D = diag(as.vector(W_esparsa$D_sparse)) # diagonal matrix with neighbors | rando
 
 rho = 0.9 # spatial correlation coefficient
 
+S = D-rho*W #  CAR priori - 
 #################################### HMC SETTINGS AND PREPARING THE SIMULATION #############################
 
 SS = 1900       # chain size at the end of simulations
