@@ -45,8 +45,6 @@ library ('RcppArmadillo')
 source("/home/alan/Documentos/TESE-ALAN/scripts-atualizados/kappa-algoritmo-troca.R")
 
 source("/home/alan/Documentos/TESE-ALAN/Artigo-regressao-binaria-espacial/ligacao-Cauchy-Potencia/funcoes-cauchy-potencia-R.R")
-source("/home/alan/Documentos/TESE-ALAN/scripts-atualizados/funcoes-medidas.R")
-source("/home/alan/Documentos/TESE-ALAN/scripts-atualizados/funcoes-auxiliares.R")
 
 #  Rcpp/C++ functions
 
