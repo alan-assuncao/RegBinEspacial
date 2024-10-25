@@ -43,6 +43,7 @@ library ('RcppArmadillo')
 # R functions 
 
 source("/home/alan/Documentos/TESE-ALAN/Artigo-regressao-binaria-espacial/ligacao-Cauchy-Potencia/funcoes-cauchy-potencia-R.R")
+source("/home/alan/Documentos/TESE-ALAN/Artigo-regressao-binaria-espacial/ligacao-Cauchy-Potencia/funcoes-auxiliares.R")
 
 #  Rcpp/C++ functions
 
@@ -50,18 +51,19 @@ sourceCpp("/home/alan/Documentos/TESE-ALAN/Artigo-regressao-binaria-espacial/lig
 
 #################################################### Example of use #######################################
 
-n = 100 # sample size
+y=read.table("Y.txt",header=TRUE) # daddos sobre ocorrencia de perio
 
-m = 60 # sites
+Y=as.matrix(y)
 
-beta1 = -0.7 ; beta2 = 0.7 # coefficient values
+x=read.table("X.csv",header=TRUE,sep=',') # covariaveis
 
-lambda = 2 # lambda value
-delta=log(lambda)
+X=as.matrix(x)
 
-set.seed(1020304050)
-W1 = graph.sim( p = m, graph = "random", vis = FALSE,rewire = 0.05 ) # Building an adjacency matrix
-plot(W1)
+pcov = length(X[1,])
+
+m = dim(Y)[2]
+
+n = dim(Y)[1]
 
 W = matrix(W1,m,m) # adjacency matrix for random graphical structure
 
