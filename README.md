@@ -65,7 +65,7 @@ m = dim(Y)[2]
 
 n = dim(Y)[1]
 
-W = matrix(W1,m,m) # adjacency matrix for random graphical structure
+W=adjacency2('/home/alan/Documentos/TESE-ALAN/Artigo-regressao-binaria-espacial/ligacao-Cauchy-Potencia/W_.csv',m)
 
 W_esparsa =W_sparsa(W) # calculating quantities for the sparse adjacency matrix W
 
@@ -82,37 +82,17 @@ lagg =1         # lagg
 
 SS. = (SS + burn)*lagg         # chain size
 idx = seq(burn * lagg + 1, SS., by = lagg)
-
-betainit = c(-0.3,0.3)
-deltainit = -0.1
-
-rbetadelta = 0
-
-x1 = rnorm(n)
-x2 = rnorm(n)
-      
-X=cbind(x1,x2)
-      
-pcov =length(X[1,]) # amount of covariates
-      
-betax=beta1*x1+beta2*x2
       
 kap = m # kappa fixed for simulations
       
-Omega_sim=rgwish( n = 1, adj =W, b = kap, D = S, threshold = 1e-8 ) # generating the precision matrix
-      
-Y=array(NA,c(n,m))
-phi=array(NA,c(n,m))
-      
-for(k in 1:n)
-{
-  phi[k,] = mvrnorm(1, mu = rep(0, times = m), Sigma = solve(Omega_sim))
+Omega_sim=rgwish( n = 1, adj =W, b = kap, D = S, threshold = 1e-8 ) # generating the initial precision matrix
 
- p = F((betax[k]+phi[k,]),delta)
-        
- Y[k,] = rbinom(m, size=1, prob=p)
-}
-     
+phi=mvrnorm(1, mu = rep(0, times =n), Sigma = solve(Omega_sim)) # generating the initial spatial random effects
+
+betainit = rep(1,3) # rep(1,5)
+
+deltainit = -0.1
+
 para = c(deltainit,betainit)
      
 map = optim(para, lpostbetadelta, gradbetadelta,phi, y = Y, X=X, control = list(fnscale = -1), method = 'BFGS', hessian = TRUE); map
@@ -134,7 +114,7 @@ Sgw = S
 Omegacpp = Omega_sim
 
 rbetadelta = 0
-      
+
 ################################################## SAMPLING PARAMETERS ##############################################################
 tempo=system.time(
         for(r in 2:SS.) {
