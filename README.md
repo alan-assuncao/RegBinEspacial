@@ -51,11 +51,11 @@ sourceCpp("/home/alan/Documentos/TESE-ALAN/Artigo-regressao-binaria-espacial/lig
 
 #################################################### Example of use #######################################
 
-y=read.table("Y.txt",header=TRUE) # daddos sobre ocorrencia de perio
+y=read.table("Y.txt",header=TRUE) # binary responses
 
 Y=as.matrix(y)
 
-x=read.table("X.csv",header=TRUE,sep=',') # covariaveis
+x=read.table("X.csv",header=TRUE,sep=',') # covariates
 
 X=as.matrix(x)
 
