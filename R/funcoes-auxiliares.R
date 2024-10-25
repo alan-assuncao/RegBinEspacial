@@ -54,3 +54,46 @@ W_sparsa = function( W){
     
     return(list(m = m, W_m = W_m, W_sparse = W_sparse, D_sparse= D_sparse))
 }
+
+#' @title Processamento da matriz de adjacencia
+#' @name adjacency2
+#'
+#' @description Uma funcao que importa a matriz de adjacencia, formatando-a e deixando-a pronta para ser usada. Esta funcao foi projetada para importar a matriz
+#' de adjacencia quando esta foi salva em formato .csv
+#'
+#' @usage ${adjacency2}(${file,n.sites})
+#'
+#' @param file O nome do arquivo do qual os dados serão lidos.
+#' @param n.sites Quantidade de unidades de area que a matriz de adjacencia possui
+#'
+#' @details The details of the adjacency2 function can be found in the vignette. Users can access the vignette using \verb{vignette(package = "SpatialBinReg")}.
+#'
+#' @return uma matriz
+#'
+#' @author Alan Assunção
+#'
+#' @seealso \code{\link[base]{f}}
+#'
+#' @examples
+#'
+#' W=adjacency2('/home/alan/Documentos/TESE-ALAN/Dados/Pernambuco-trimestre-menos-chuvoso/W_PE.csv',n)
+#'
+#' W_esparsa =W_sparsa(W) # calculando quantidades para a matriz de adjacencia esparsa W
+#'
+#' diag(as.vector(W_esparsa$D_sparse)) # matriz diagonal com os vizinhos
+#'
+#' @export
+
+adjacency2 <- function(file,n.sites) {
+  # Set up adjacency matrix W.
+  dat    = read.csv(file)
+  
+  ADJ= matrix(0,n.sites,n.sites)
+  
+  for (s1 in 1:n.sites) {
+    for (s2 in 1:n.sites) {
+      ADJ[s1,s2]=dat[s1,s2]
+      }
+    }
+  return(ADJ)
+}
