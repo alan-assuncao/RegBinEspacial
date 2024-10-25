@@ -25,7 +25,7 @@ devtools::install_github(repo = "https://github.com/alan-assuncao/RegBinEspacial
 
 ## Example
 
-The code provided here is provided for research purposes only. In the following, we simulate data from our model under the Cauchy Power link function and illustrate the use of our sampling method for the model parameters.
+The code provided here is provided for research purposes only. In the following, we simulate data from our model under the Cauchy Power link function and illustrate the use of our sampling method for the model parameters. The simulated data can be found here in the simulated-data folder
 
 ```R
 rm(list=ls())# clear PC memory
