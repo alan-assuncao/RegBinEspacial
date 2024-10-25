@@ -17,7 +17,7 @@ We will be using the class of Power and Power Reverse link functions presented i
 The vignete is available  [here](https://github.com/alan-assuncao) (I need to change the link)
 
 ## Instalation
-You can install the development version of `RegBinEspacial` from [GitHub](https://github.com/alan-assuncao/RegBinEspacial) with:
+You can install the development version of `SpatialBinReg` from [GitHub](https://github.com/alan-assuncao/RegBinEspacial) with:
 
 ```R
 devtools::install_github(repo = "https://github.com/alan-assuncao/RegBinEspacial")
