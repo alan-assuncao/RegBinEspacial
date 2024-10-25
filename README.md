@@ -119,7 +119,7 @@ rbetadelta = 0
 tempo=system.time(
         for(r in 2:SS.) {
           
-          # amostrando beta, xi e phi i=1,...,n
+          # sampling beta, xi e phi i=1,...,n
           
           B=hmcCpp(theta[r-1,],SS=1,burn=1,lag=1, epsilon=0.1, LF=22,epsphi = 0.001, Lphi = 22, M=G., y=Y,X=X, Omega=Omegacpp)
           
