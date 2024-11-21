@@ -18,6 +18,12 @@ where $F_\lambda$ denotes a continuous cumulative distribution function (cdf), w
 
 $\delta=log(\lambda) \in \mathbb{R}$, is a convenient parameterization for the shape parameter $\lambda$ to simplify Bayesian computation, as per Bazán et al. (2017), $S$ is the scale matrix and $\kappa$ the degrees of freedom. We will be using the class of Power and Power Reverse link functions presented in the work of Bazán et al. (2017) to deal with unbalanced data scenarios.
 
+## Main Functions
+
+### Implementação do amostrador de Monte Carlo Hamiltoniano para $\beta$, $\delta$ e $\phi_i$ para $i=1,\ldots,n$
+
+As funções que implementam os amostradores dos parâmetros $\beta$, $\delta$ e $\phi_i$ para $i=1,\ldots,n$ começam com o termo 'hmcCpp' seguida do nome da função de ligacao. Assim, os nomes das funções são 
+
 ## Example
 
 The code provided here is provided for research purposes only. In the following, we simulate data from our model under the Cauchy Power link function and illustrate the use of our sampling method for the model parameters. The simulated data can be found here in the simulated-data folder
