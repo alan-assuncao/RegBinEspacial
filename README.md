@@ -1,4 +1,4 @@
-# `SpatialBinReg`: R package for spatial binary regression analysis under sparsity using flexible link functions.
+# Bayesian inference under sparsity for spatial binary regression models.
 
 ## Overview
 
