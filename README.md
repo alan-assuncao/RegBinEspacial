@@ -43,7 +43,16 @@ Cada arquivo `R` acima é composto de quatro funções:
 * **lpostbetadelta** - implementa a log-posteriori do vetor de parâmetros $(\beta,\delta)$
 * **gradbetadelta** - implementa o gradiente do vetor de parâmetros $(\beta,\delta)$ sob a respectiva função de ligação
 * **G** - Calcula a matriz de informação do modelo sob a função de ligação especificada
-  
+
+Cada arquivo com funções `Rcpp` no quadro acima é composto das três primeiras funções descritas acima, só que "traduzidas" para o `Rcpp` junto com as demais funções a seguir:
+* **lpostphi** - implementa a log-posteriori do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
+* **gradphi** - implementa o gradiente do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
+* **hmcCpp** - implementa métodos de Monte Carlo Hamiltoniano para amostrar o vetor de parâmetros $(\beta,\delta)$ e os efeitos aleatórios espaciais $\phi_i$ $i=1,\ldots,n$
+
+### Sampling from G-Wishart
+
+Para amostrar valores da distribuição G-Wishart, utilizaremos uma função disponível no pacote `R` `BDgraph`.
+
 ## Example
 
 The code provided here is provided for research purposes only. In the following, we simulate data from our model under the Cauchy Power link function and illustrate the use of our sampling method for the model parameters. The simulated data can be found here in the simulated-data folder
