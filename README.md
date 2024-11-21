@@ -15,15 +15,6 @@ where $F_\lambda$ denotes a continuous cumulative distribution function (cdf), w
 
 We will be using the class of Power and Power Reverse link functions presented in the work of Bazán et al. (2017) to deal with unbalanced data scenarios.
 
-The vignete is available  [here](https://github.com/alan-assuncao) (I need to change the link)
-
-## Instalation
-You can install the development version of `SpatialBinReg` from [GitHub](https://github.com/alan-assuncao/RegBinEspacial) with:
-
-```R
-devtools::install_github(repo = "https://github.com/alan-assuncao/RegBinEspacial")
-```
-
 ## Example
 
 The code provided here is provided for research purposes only. In the following, we simulate data from our model under the Cauchy Power link function and illustrate the use of our sampling method for the model parameters. The simulated data can be found here in the simulated-data folder
