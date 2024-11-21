@@ -44,7 +44,7 @@ Cada arquivo `R` acima é composto de quatro funções:
 * **gradbetadelta** - implementa o gradiente do vetor de parâmetros $(\beta,\delta)$ sob a respectiva função de ligação
 * **G** - Calcula a matriz de informação do modelo sob a função de ligação especificada
 
-Cada arquivo com funções `Rcpp` no quadro acima é composto das três primeiras funções descritas acima, só que "traduzidas" para o `Rcpp` junto com as demais funções a seguir:
+Cada arquivo com funções `Rcpp` descrito no quadro é composto das três primeiras funções descritas acima, só que "traduzidas" para o `Rcpp`, junto com as demais funções a seguir:
 * **lpostphi** - implementa a log-posteriori do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
 * **gradphi** - implementa o gradiente do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
 * **hmcCpp** - implementa métodos de Monte Carlo Hamiltoniano para amostrar o vetor de parâmetros $(\beta,\delta)$ e os efeitos aleatórios espaciais $\phi_i$ $i=1,\ldots,n$
