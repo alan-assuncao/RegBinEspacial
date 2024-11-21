@@ -10,10 +10,13 @@ The implementations performed here derive from the results obtained in the paper
 Consider a spatial situation where we observe a binary response $y_{is}$ for subject $i$, at site $s$ within subject $i$. We assume that $Y_{is}\sim\mbox{Bernoulli}(p_{is})$ and for each individual $i$ the probability that $Y_{is}=1$ depends on a set of subject level covariates $x_i$ and on a neighbouring structure. The binary regression model with a spatial component is then given by
 
 $$p_{is} = F_\lambda(x_{i}'\beta + \phi_{is}), i=1,\dots,n, ~s=1,\dots,m$$
+$$\delta=log(\lambda) \sim U(-2,2) \mbox{ and } \beta \sim N_p(0,100\times I_p)$$
+$$\phi_i \sim N_m(0,\Omega)\mbox{ } i=1,\ldots,n,$$
+$$\Omega \sim \mbox{G-Wishart}_W(\kappa=m,S)$$
 
-where $F_\lambda$ denotes a continuous cumulative distribution function (cdf), which can be any monotonically increasing function that maps an input in $\mathbb{R}$ onto the (0,1) interval and $F^{-1}$ is typically called a link function. $\lambda$ is the shape parameter, $x_{i}$ is the vector of covariates for subject $i$ (that do not vary across space), $\beta\in\mathbb{R}^k$ is the $k\times 1$ vector of covariate coefficients (fixed effects) and $\phi_{is}$ are spatially correlated random effects. 
+where $F_\lambda$ denotes a continuous cumulative distribution function (cdf), which can be any monotonically increasing function that maps an input in $\mathbb{R}$ onto the (0,1) interval and $F^{-1}$ is typically called a link function. $\lambda$ is the shape parameter, $x_{i}$ is the vector of covariates for subject $i$ (that do not vary across space), $\beta\in\mathbb{R}^k$ is the $k\times 1$ vector of covariate coefficients (fixed effects) and $\phi_{is}$ are spatially correlated random effects.
 
-We will be using the class of Power and Power Reverse link functions presented in the work of Bazán et al. (2017) to deal with unbalanced data scenarios.
+$\delta=log(\lambda) \in \mathbb{R}$, is a convenient parameterization for the shape parameter $\lambda$ to simplify Bayesian computation, as per Bazán et al. (2017), $S$ is the scale matrix and $\kappa$ the degrees of freedom. We will be using the class of Power and Power Reverse link functions presented in the work of Bazán et al. (2017) to deal with unbalanced data scenarios.
 
 ## Example
 
