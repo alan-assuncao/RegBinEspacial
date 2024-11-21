@@ -22,7 +22,23 @@ $\delta=log(\lambda) \in \mathbb{R}$, is a convenient parameterization for the s
 
 ### Implementação do amostrador de Monte Carlo Hamiltoniano para $\beta$, $\delta$ e $\phi_i$ para $i=1,\ldots,n$
 
-As funções que implementam os amostradores dos parâmetros $\beta$, $\delta$ e $\phi_i$ para $i=1,\ldots,n$ começam com o termo 'hmcCpp' seguida do nome da função de ligacao. Assim, os nomes das funções são 
+Para cada uma das funções de ligação adotadas nesta aplicação, há dois arquivos contendo funções para poder viabilizar a implementação dos modelos sob a respectiva função de ligação. O primeiro arquivo contém funções R que calcularão a matriz de informação do modelo sob a função de ligação desejada para o vetor de parâmetros $(\beta,\delta)$. A matriz de informação é necessária para a implementação do Monte Carlo Hamiloniano Riemann-Manifold, que fará a amostragem do vetor de parâmetros $(\beta,\delta)$. O segundo arquivo, possui extensão .cpp e possui funções que implementam, propriamente falando, os métodos de Monte Carlo
+Hamiltoniano para amostrar o vetor de parâmetros $(\beta,\delta)$ e os efeitos aleatórios espaciais $\phi_i$ $i=1,\ldots,n$. A descrição desses arquivos para cada função de ligação consta no quadro abaixo
+
+Link | R file | Rcpp file
+---  |---     |---
+Power Cauchy          | funcoes-cauchy-potencia-R.R         | hmcCpp-cauchy-potencia.cpp
+Reverse Power Cauchy  | funcoes-cauchy-reversa-potencia-R.R | hmcCpp-cauchy-reversa-potencia.cpp
+Power Logistic        | funcoes-logistica-potencia-R.R      | hmcCpp-logistica-potencia.cpp
+Reverse Power Logistic| funcoes-logistica-reversa-potencia-R.R |hmcCpp-logistica-reversa-potencia.cpp
+Power Reverse Gumbel  | funcoes-gumbel-reversa-potencia-R.R | hmcCpp-gumbel-reversa-potencia.cpp
+Reverse Power Reverse Gumbel | funcoes-gumbel-reversa-reversa-de-potencia-R.R | hmcCpp-gumbel-reversa-reversa-de-potencia.cpp
+Power Normal          | funcoes-normal-potencia-R.R         | hmcCpp-normal-potencia.cpp
+Reverse Power Normal  | funcoes-normal-reversa-potencia-R.R | hmcCpp-normal-reversa-potencia.cpp
+Logit                 | funcoes-logito-R.R                  | hmcCpp-logito.cpp
+Probit                | funcoes-probito-potencia-R.R        | hmcCpp-probito-potencia.cpp
+Cloglog               | funcoes-cloglog-potencia-R.R        | hmcCpp-cloglog-potencia.cpp
+
 
 ## Example
 
