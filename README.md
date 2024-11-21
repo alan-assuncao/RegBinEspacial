@@ -1,8 +1,9 @@
 # Bayesian inference under sparsity for spatial binary regression models.
 
-## Overview
+We implement a spatial binary regression model for area data, using a class of flexible link functions that include an extra shape parameter that can be adapted according to the degree of skewness present in the data. The provided codes were written in R and also in C++ to optimize computational efficiency through the R package `Rcpp`.
 
-`SpatialBinReg` implements a spatial binary regression model for area data, using a class of flexible link functions that include an extra shape parameter that can conveniently adapt to the degree of asymmetry present in the data. The codes provided were written in R and also in C++ to optimize computational efficiency through the R package `Rcpp`. In this package, we illustrate our methodology by applying it to a motivating dataset on periodontal disease and also include a simulation study to investigate the robustness of our methods. We follow a Bayesian approach to perform parameter estimation and model comparison based on efficient Hamiltonian Monte Carlo samplers.
+## Overview
+The implementations performed here derive from the results obtained in the paper, Alan S. Assunção, Ricardo S. Ehlers, Dipankar Bandyopadhyay "Bayesian inference under sparsity for spatial binary regression models". We illustrate our application to a motivating dataset on periodontal disease and also include a simulation study to investigate the robustness of our methods. We follow a Bayesian approach to perform parameter estimation and model comparison.
 
 ## A Hierarchical Spatial Model
 
