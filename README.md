@@ -61,10 +61,12 @@ No arquivo **funcoes-auxiliares.R** contém duas funções:
 
 ## Example
 We consider a sample of $n = 100$ subjects, $m = 60$ sites for each
-subject, e duas covariáveis $x_1$ e $x_2$ geradas de uma distribuição $N(0,1)$ cada. Os dados observados $Y_{is}$ com $i=1,\ldots,100$ e $s=1,\ldots,60$ foram gerados por meio da função de ligação da distribuição Cauchy Potência 
+subject, $\lambda=2$ e duas covariáveis $x_1$ e $x_2$ geradas de uma distribuição $N(0,1)$ cada. Os dados observados $Y_{is}$ com $i=1,\ldots,100$ e $s=1,\ldots,60$ foram gerados por meio da função de ligação da distribuição Cauchy Potência 
 $$p_{is}=\left[\frac{1}{\pi}\mbox{arctan}(x_i^\top\beta+\phi_{is})+\frac{1}{2}\right]^\lambda$$. True regression parameter : $\beta = (-0.7, 0.7)$.
 
 The simulated data can be found here in the simulated-data folder
+
+**Calling the data and loading the adjacency matrix**
 
 ```R
 rm(list=ls())# clear PC memory
@@ -112,7 +114,12 @@ D = diag(as.vector(W_esparsa$D_sparse)) # diagonal matrix with neighbors | rando
 
 rho = 0.9 # spatial correlation coefficient
 
-S = D-rho*W #  CAR priori - 
+S = D-rho*W #  CAR priori -
+```
+
+**Defining the quantities to run the Hamiltonian Monte Carlo and obtaining the maximum a posteriori of (\beta,\delta)**
+
+```R
 #################################### HMC SETTINGS AND PREPARING THE SIMULATION #############################
 
 SS = 1900       # chain size at the end of simulations
@@ -143,7 +150,10 @@ theta.current =c(map$par,phi)
 D. <- length(theta.current)
       
 theta      <- matrix( , SS., D.)
-theta[1, ] <- theta.current  
+theta[1, ] <- theta.current
+```
+**Simulating a posteriori samples**
+```R
       
 ######################################### INITIAL VALUES FOR PARAMETER CHAINS ######################
       
@@ -187,7 +197,10 @@ tempo=system.time(
           Sgw = 0
         }         
 )
+```
+**Obtaining a posteriori estimates**
 
+```R
  theta = theta[idx, ]
       
 post = theta
@@ -208,7 +221,6 @@ phipost = post[,((2+pcov):(1+pcov+n*m))]
 # [1] 1.958251
 ```
 
-## Documentation
 
 ## Reference
 * Alves, J. S., Bazán, J. L. and Arellano-Valle, R. B. (2023) Flexible cloglog links for binomial regression models as
