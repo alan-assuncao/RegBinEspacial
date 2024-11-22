@@ -1,14 +1,14 @@
-#' @title Calculo de varias quantidades relacionadas a matriz de adjacencia W
+#' @title Calculation of various quantities related to the adjacency matrix W
 #' @name W_sparsa
 #'
-#' @description Uma funcao que calcula varias quantidades relativas  a matriz de adjacencia W. Esta recebe a matriz de
-#' adjacencia W, e retorna uma lista de resultados 
+#' @description A function that calculates various quantities relative to the adjacency matrix W. It takes the adjacency matrix W, and returns a list of results.
 #'
 #' @usage ${W_sparsa}(${W})
 
-#' @param W Uma matriz
+#' @param W A matrix
 #'
-#' @details The details of the W_sparsa function can be found in the vignette. Users can access the vignette using \verb{vignette(package = "SpatialBinReg")}.
+#' @details The details of the W_sparsa function can be found in the vignette. Users can access the vignette using \verb{vignette(package = "SpatialBinReg")}. 
+#' Obs: The vignette is still in production
 #'
 #' @return um lista de  resulatdos, a saber: quantidade de unidades de area; quantidade de pares de adjacencia; pares de adjacencia; e numero de vizinhos
 #' para cada unidade de area
