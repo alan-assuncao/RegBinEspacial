@@ -39,15 +39,15 @@ Probit                | funcoes-probito-potencia-R.R        | hmcCpp-probito-pot
 Cloglog               | funcoes-cloglog-potencia-R.R        | hmcCpp-cloglog-potencia.cpp
 
 Cada arquivo `R` acima é composto de quatro funções:
-* **F** - implementa a função de distribuição acumulada que dá origem à respectiva função de ligação
-* **lpostbetadelta** - implementa a log-posteriori do vetor de parâmetros $(\beta,\delta)$
-* **gradbetadelta** - implementa o gradiente do vetor de parâmetros $(\beta,\delta)$ sob a respectiva função de ligação
-* **G** - Calcula a matriz de informação do modelo sob a função de ligação especificada
+* `F` - implementa a função de distribuição acumulada que dá origem à respectiva função de ligação
+* `lpostbetadelta` - implementa a log-posteriori do vetor de parâmetros $(\beta,\delta)$
+* `gradbetadelta` - implementa o gradiente do vetor de parâmetros $(\beta,\delta)$ sob a respectiva função de ligação
+* `G` - Calcula a matriz de informação do modelo sob a função de ligação especificada
 
 Cada arquivo com funções `Rcpp` descrito no quadro é composto das três primeiras funções descritas acima, só que "traduzidas" para o `Rcpp`, junto com as demais funções a seguir:
-* **lpostphi** - implementa a log-posteriori do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
-* **gradphi** - implementa o gradiente do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
-* **hmcCpp** - implementa métodos de Monte Carlo Hamiltoniano para amostrar o vetor de parâmetros $(\beta,\delta)$ e os efeitos aleatórios espaciais $\phi_i$ $i=1,\ldots,n$
+* `lpostphi` - implementa a log-posteriori do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
+* `gradphi` - implementa o gradiente do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
+* `hmcCpp` - implementa métodos de Monte Carlo Hamiltoniano para amostrar o vetor de parâmetros $(\beta,\delta)$ e os efeitos aleatórios espaciais $\phi_i$ $i=1,\ldots,n$
 
 ### Sampling from G-Wishart
 
@@ -56,8 +56,8 @@ Para amostrar valores da distribuição G-Wishart, utilizaremos uma função dis
 ## Auxiliary functions
 No arquivo **funcoes-auxiliares.R** contém duas funções:
 
-* **W_sparsa** - Calculation of various quantities related to the adjacency matrix W. Return a list of results, namely: number of area units; number of adjacency pairs; adjacency pairs; and number of neighbors for each area unit
-* **adjacency2** - A function that imports the adjacency matrix, formatting it and making it ready to be used. This function is designed to import the adjacency matrix when it has been saved in .csv format.
+* `W_sparsa` - Calculation of various quantities related to the adjacency matrix W. Return a list of results, namely: number of area units; number of adjacency pairs; adjacency pairs; and number of neighbors for each area unit
+* `adjacency2` - A function that imports the adjacency matrix, formatting it and making it ready to be used. This function is designed to import the adjacency matrix when it has been saved in .csv format.
 
 ## Example
 
