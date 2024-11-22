@@ -53,6 +53,12 @@ Cada arquivo com funções `Rcpp` descrito no quadro é composto das três prime
 
 Para amostrar valores da distribuição G-Wishart, utilizaremos uma função disponível no pacote `R` `BDgraph`.
 
+## Auxiliary functions
+No arquivo **funcoes-auxiliares.R** contém duas funções:
+
+* **W_sparsa** - Calculation of various quantities related to the adjacency matrix W. Return a list of results, namely: number of area units; number of adjacency pairs; adjacency pairs; and number of neighbors for each area unit
+* **adjacency2** - A function that imports the adjacency matrix, formatting it and making it ready to be used. This function is designed to import the adjacency matrix when it has been saved in .csv format.
+
 ## Example
 
 The code provided here is provided for research purposes only. In the following, we simulate data from our model under the Cauchy Power link function and illustrate the use of our sampling method for the model parameters. The simulated data can be found here in the simulated-data folder
