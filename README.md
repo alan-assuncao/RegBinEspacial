@@ -16,7 +16,7 @@ $$\Omega \sim \mbox{G-Wishart}_W(\kappa=m,S)$$
 
 where $F_\lambda$ denotes a continuous cumulative distribution function (cdf), which can be any monotonically increasing function that maps an input in $\mathbb{R}$ onto the (0,1) interval and $F^{-1}$ is typically called a link function. $\lambda$ is the shape parameter, $x_{i}$ is the vector of covariates for subject $i$ (that do not vary across space), $\beta\in\mathbb{R}^k$ is the $k\times 1$ vector of covariate coefficients (fixed effects) and $\phi_{is}$ are spatially correlated random effects.
 
-$\delta=log(\lambda) \in \mathbb{R}$, is a convenient parameterization for the shape parameter $\lambda$ to simplify Bayesian computation, as per Bazán et al. (2017), $S$ is the scale matrix and $\kappa$ the degrees of freedom. We will be using the class of Power and Power Reverse link functions presented in the work of Bazán et al. (2017) to deal with unbalanced data scenarios.
+$\delta=log(\lambda) \in \mathbb{R}$, is a convenient parameterization for the shape parameter $\lambda$ to simplify Bayesian computation, as per Bazán et al. (2017), $S$ is the scale matrix and $\kappa$ the degrees of freedom. We will be using the class of Power and Power Reverse link functions presented in the work of [Bazán et al. (2017)](https://onlinelibrary.wiley.com/doi/pdf/10.1002/asmb.2215) to deal with unbalanced data scenarios.
 
 ## Main Functions
 
