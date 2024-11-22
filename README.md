@@ -51,7 +51,7 @@ Cada arquivo com funções `Rcpp` descrito no quadro é composto das três prime
 
 ### Sampling from G-Wishart
 
-Para amostrar valores da distribuição G-Wishart, utilizaremos uma função disponível no pacote `R` `BDgraph`.
+Para amostrar valores da distribuição G-Wishart, utilizaremos uma função disponível no pacote `R` `BDgraph` [Mohammadi, R., Massam, H., & Letac, G. (2021).](https://www.tandfonline.com/doi/full/10.1080/01621459.2021.1996377).
 
 ## Auxiliary functions
 No arquivo **funcoes-auxiliares.R** contém duas funções:
