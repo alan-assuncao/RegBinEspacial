@@ -60,6 +60,20 @@ No arquivo **funcoes-auxiliares.R** contém duas funções:
 * `adjacency2` - A function that imports the adjacency matrix, formatting it and making it ready to be used. This function is designed to import the adjacency matrix when it has been saved in .csv format.
 
 ## Example
+We consider a sample of $n = 100$ subjects, $m = 10$ teeth for each
+subject, and disease states $0, 1, \ldots, K$ with $K = 3$ for each
+teeth. Each subject has a $p$-dimensional vector of covariates. Here, we
+take $p = 5$ with two subject level covariates (one binary and one
+continuous) and one tooth level covariate indicating whether a tooth is
+present in the upper or lower jaw.
+
+- True regression parameter : $\beta = (-1, 1, -1) / \sqrt{3}$.
+
+- True monotone link function :
+  $g(x) = c \cdot ( \Phi ( \frac{(x+1)/2 \ - \ 0.5}{0.2}) - \Phi ( { - \ 0.5}/{0.2}) )$,
+  $x \in [-1,1]$, where $c$ is a constant chosen in such a way that the
+  signal-to-noise ratio (SNR) is fixed at $5$. Here, $\Phi$ denotes the
+  CDF of a standard normal distribution.
 
 The code provided here is provided for research purposes only. In the following, we simulate data from our model under the Cauchy Power link function and illustrate the use of our sampling method for the model parameters. The simulated data can be found here in the simulated-data folder
 
