@@ -117,7 +117,7 @@ rho = 0.9 # spatial correlation coefficient
 S = D-rho*W #  CAR priori -
 ```
 
-**Defining the quantities to run the Hamiltonian Monte Carlo and obtaining the maximum a posteriori of (\beta,\delta)**
+**Defining the quantities to run the Hamiltonian Monte Carlo and obtaining the maximum a posteriori of $(\beta,\delta)$**
 
 ```R
 #################################### HMC SETTINGS AND PREPARING THE SIMULATION #############################
@@ -133,7 +133,7 @@ kap = m # kappa fixed for simulations
       
 Omega_sim=rgwish( n = 1, adj =W, b = kap, D = S, threshold = 1e-8 ) # generating the initial precision matrix
 
-phi=mvrnorm(1, mu = rep(0, times =n), Sigma = solve(Omega_sim)) # generating the initial spatial random effects
+phi=mvrnorm(n, mu = rep(0, times =m), Sigma = solve(Omega_sim)) # generating the initial spatial random effects
 
 betainit = rep(1,3) # rep(1,5)
 
@@ -152,7 +152,7 @@ D. <- length(theta.current)
 theta      <- matrix( , SS., D.)
 theta[1, ] <- theta.current
 ```
-**Simulating a posteriori samples**
+**Simulating posteriori samples**
 ```R
       
 ######################################### INITIAL VALUES FOR PARAMETER CHAINS ######################
