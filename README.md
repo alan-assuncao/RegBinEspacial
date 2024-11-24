@@ -22,7 +22,7 @@ $\delta=log(\lambda) \in \mathbb{R}$, is a convenient parameterization for the s
 
 ### Implementação do amostrador de Monte Carlo Hamiltoniano para $\beta$, $\delta$ e $\phi_i$ para $i=1,\ldots,n$
 
-Para cada uma das funções de ligação adotadas nesta aplicação, há dois arquivos contendo funções para poder viabilizar a implementação dos modelos sob a respectiva função de ligação. O primeiro arquivo contém funções `R` que calcularão a matriz de informação do modelo sob a função de ligação desejada para o vetor de parâmetros $(\beta,\delta)$. A matriz de informação é necessária para a implementação do Monte Carlo Hamiloniano Riemann-Manifold, que fará a amostragem do vetor de parâmetros $(\beta,\delta)$. O segundo arquivo, possui extensão `.cpp` e possui funções que implementam, propriamente falando, os métodos de Monte Carlo Hamiltoniano para amostrar o vetor de parâmetros $(\beta,\delta)$ e os vetores de efeitos aleatórios espaciais $\phi_i$ $i=1,\ldots,n$. A descrição desses arquivos para cada função de ligação consta no quadro abaixo
+For each of the link functions adopted in this application, there are two files containing functions to enable the implementation of the models under the respective link function. The first file contains `R` functions that will calculate the information matrix of the model under the desired link function for the parameter vector $(\beta,\delta)$. The information matrix is ​​necessary for the implementation of the Riemann-Manifold Hamiltonian Monte Carlo, which will sample the parameter vector $(\beta,\delta)$. The second file, with the extension `.cpp`, contains functions that implement, strictly speaking, the Hamiltonian Monte Carlo methods to sample the parameter vector $(\beta,\delta)$ and the spatial random effects vectors $\phi_i$ $i=1,\ldots,n$. The description of these files for each link function is shown in the table below.
 
 Link | R file | Rcpp file
 ---  |---     |---
@@ -38,30 +38,29 @@ Logit                 | funcoes-logito-R.R                  | hmcCpp-logito.cpp
 Probit                | funcoes-probito-potencia-R.R        | hmcCpp-probito-potencia.cpp
 Cloglog               | funcoes-cloglog-potencia-R.R        | hmcCpp-cloglog-potencia.cpp
 
-Cada arquivo `R` acima é composto de quatro funções:
-* `F` - implementa a função de distribuição acumulada que dá origem à respectiva função de ligação
-* `lpostbetadelta` - implementa a log-posteriori do vetor de parâmetros $(\beta,\delta)$
-* `gradbetadelta` - implementa o gradiente do vetor de parâmetros $(\beta,\delta)$ sob a respectiva função de ligação
-* `G` - Calcula a matriz de informação do modelo sob a função de ligação especificada
+Each `R` file above is composed of four functions:
+* `F` - implements the cumulative distribution function that gives rise to the respective link function
+* `lpostbetadelta` - implements the log-posteriori of the parameter vector $(\beta,\delta)$
+* `gradbetadelta` - implements the gradient of the parameter vector $(\beta,\delta)$ under the respective link function
+* `G` - Calculates the information matrix of the model under the specified link function
 
-Cada arquivo com funções `Rcpp` descrito no quadro é composto das três primeiras funções descritas acima, só que "traduzidas" para o `Rcpp`, junto com as demais funções a seguir:
-* `lpostphi` - implementa a log-posteriori do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
-* `gradphi` - implementa o gradiente do vetor de efeitos aleatórios espaciais $\phi_i$ para $i=1,\ldots,n$
-* `hmcCpp` - implementa métodos de Monte Carlo Hamiltoniano para amostrar o vetor de parâmetros $(\beta,\delta)$ e os efeitos aleatórios espaciais $\phi_i$ $i=1,\ldots,n$
+Each file with `Rcpp` functions described in the table is composed of the first three functions described above, but "translated" to `Rcpp`, together with the following functions:
+* `lpostphi` - implements the log-posteriori of the spatial random effects vector $\phi_i$ para $i=1,\ldots,n$
+* `gradphi` - implements the gradient of the spatial random effects vector $\phi_i$ para $i=1,\ldots,n$
+* `hmcCpp` - implements Hamiltonian Monte Carlo methods to sample the parameter vector $(\beta,\delta)$ and spatial random effects $\phi_i$ $i=1,\ldots,n$
 
 ### Sampling from G-Wishart
 
-Para amostrar valores da distribuição G-Wishart, utilizaremos uma função disponível no pacote `R` `BDgraph` [Mohammadi, R., Massam, H., & Letac, G. (2021).](https://www.tandfonline.com/doi/full/10.1080/01621459.2021.1996377).
+To sample values ​​from the G-Wishart distribution, we will use a function available in the package `R` `BDgraph` [Mohammadi, R., Massam, H., & Letac, G. (2021).](https://www.tandfonline.com/doi/full/10.1080/01621459.2021.1996377).
 
 ## Auxiliary functions
-No arquivo **funcoes-auxiliares.R** contém duas funções:
+The file **funcoes-auxiliares.R** contains two functions:
 
 * `W_sparsa` - Calculation of various quantities related to the adjacency matrix W. Return a list of results, namely: number of area units; number of adjacency pairs; adjacency pairs; and number of neighbors for each area unit
 * `adjacency2` - A function that imports the adjacency matrix, formatting it and making it ready to be used. This function is designed to import the adjacency matrix when it has been saved in .csv format.
 
 ## Example
-We consider a sample of $n = 100$ subjects, $m = 60$ sites for each
-subject, $\lambda=2$ e duas covariáveis $x_1$ e $x_2$ geradas de uma distribuição $N(0,1)$ cada. Os dados observados $Y_{is}$ com $i=1,\ldots,100$ e $s=1,\ldots,60$ foram gerados por meio da função de ligação da distribuição Cauchy Potência 
+We consider a sample of $n = 100$ subjects, $m = 60$ sites for each subject, $\lambda=2$ and two covariates $x_1$ and $x_2$ generated from a distribution $N(0,1)$ each. The observed data $Y_{is}$ with $i=1,\ldots,100$ and $s=1,\ldots,60$ were generated using the link function of the Power Cauchy distribution 
 $$p_{is}=\left[\frac{1}{\pi}\mbox{arctan}(x_i^\top\beta+\phi_{is})+\frac{1}{2}\right]^\lambda$$. True regression parameter : $\beta = (-0.7, 0.7)$. 5000 MCMC samples were generated, discarding 2500 of them as burn-in
 
 The simulated data can be found here in the simulated-data folder
