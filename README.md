@@ -123,7 +123,7 @@ S = D-rho*W #  CAR priori -
 #################################### HMC SETTINGS AND PREPARING THE SIMULATION #############################
 
 SS = 2500       # chain size at the end of simulations
-burn = 1000      # burn-in
+burn = 2500      # burn-in
 lagg =1         # lagg
 
 SS. = (SS + burn)*lagg         # chain size
@@ -213,12 +213,14 @@ betapost = post[,(2:(pcov+1))]
       
 phipost = post[,((2+pcov):(1+pcov+n*m))]
       
-> mean(deltapost);mean(betapost[,1]);mean(betapost[,2])
-[1] 0.6616733
-[1] -0.6907235
-[1] 0.6208818
-> mean(exp(deltapost))
-[1] 1.938321
+# Posterior mean of beta and lambda
+
+hat.lambda=mean(lambdapost)
+hat.beta = colMeans(out$beta)
+
+
+# 95% credible interval of beta
+CI.beta = apply(sam.beta, 2, quantile, probs=c(0.025,0.975))
 ```
 
 
