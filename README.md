@@ -242,6 +242,7 @@ g.beta = ggplot(df_beta, aes(x = x, y = beta)) +
   xlab("") + ylab("")+theme_bw()
 g.beta
 ```
+[estimativas-plot.pdf](https://github.com/user-attachments/files/17890815/estimativas-plot.pdf)
 
 ## Reference
 * Alves, J. S., Bazán, J. L. and Arellano-Valle, R. B. (2023) Flexible cloglog links for binomial regression models as
