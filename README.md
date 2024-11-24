@@ -222,7 +222,26 @@ hat.beta = colMeans(betapost)
 # 95% credible interval of beta and lambda
 CI.beta = apply(cbind(lambdapost,betapost), 2, quantile, probs=c(0.025,0.975))
 ```
+**Graph showing true and estimated regression and shape parameters along with 0.95 credibility intervals:**
 
+```R
+# data frame for plotting the posterior estimates of beta
+
+true.beta=c(2,-0.7,0.7)
+
+df_beta = data.frame(x = paste0(c('lambda','beta 1','beta 2')), beta = c(true.beta, hat.lambda,hat.beta),
+                     type = rep(c("true", "estimated"), each = pcov+1),
+                     beta_u = CI.beta[2,], beta_l = CI.beta[1, ])
+
+# plot the posterior mean and 95% CI of beta, along with the true parameters 
+g.beta = ggplot(df_beta, aes(x = x, y = beta)) +
+  geom_errorbar(aes(ymin=beta_l, ymax=beta_u), width=.15, color = "red3") +
+  geom_point(aes(color = type, shape = type)) +
+  scale_color_manual(values = c("red3", "black"))+
+  geom_abline(slope = 0, linetype = "dotted")+
+  xlab("") + ylab("")+theme_bw()
+g.beta
+```
 
 ## Reference
 * Alves, J. S., Bazán, J. L. and Arellano-Valle, R. B. (2023) Flexible cloglog links for binomial regression models as
