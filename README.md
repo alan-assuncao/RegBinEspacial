@@ -216,11 +216,11 @@ phipost = post[,((2+pcov):(1+pcov+n*m))]
 # Posterior mean of beta and lambda
 
 hat.lambda=mean(lambdapost)
-hat.beta = colMeans(out$beta)
+hat.beta = colMeans(betapost)
 
 
-# 95% credible interval of beta
-CI.beta = apply(sam.beta, 2, quantile, probs=c(0.025,0.975))
+# 95% credible interval of beta and lambda
+CI.beta = apply(cbind(lambdapost,betapost), 2, quantile, probs=c(0.025,0.975))
 ```
 
 
