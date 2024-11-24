@@ -62,7 +62,7 @@ No arquivo **funcoes-auxiliares.R** contém duas funções:
 ## Example
 We consider a sample of $n = 100$ subjects, $m = 60$ sites for each
 subject, $\lambda=2$ e duas covariáveis $x_1$ e $x_2$ geradas de uma distribuição $N(0,1)$ cada. Os dados observados $Y_{is}$ com $i=1,\ldots,100$ e $s=1,\ldots,60$ foram gerados por meio da função de ligação da distribuição Cauchy Potência 
-$$p_{is}=\left[\frac{1}{\pi}\mbox{arctan}(x_i^\top\beta+\phi_{is})+\frac{1}{2}\right]^\lambda$$. True regression parameter : $\beta = (-0.7, 0.7)$.
+$$p_{is}=\left[\frac{1}{\pi}\mbox{arctan}(x_i^\top\beta+\phi_{is})+\frac{1}{2}\right]^\lambda$$. True regression parameter : $\beta = (-0.7, 0.7)$. 5000 MCMC samples were generated, discarding 2500 of them as burn-in
 
 The simulated data can be found here in the simulated-data folder
 
@@ -242,7 +242,35 @@ g.beta = ggplot(df_beta, aes(x = x, y = beta)) +
   xlab("") + ylab("")+theme_bw()
 g.beta
 ```
-[estimativas-plot.pdf](https://github.com/user-attachments/files/17890815/estimativas-plot.pdf)
+![](https://github.com/user-attachments/assets/d017ec3c-ac9e-4dbe-8d73-a5ceada63c30)
+
+**Chain convergence graphs**
+
+```R
+
+# trace-plot
+
+par(mfrow=c(1,3))
+plot(lambdapost,xlab = '',ylab = '',main = 'lambda', type = 'l');
+plot(betapost[, 1],xlab = '',ylab = '',main = 'Beta1', type = 'l');
+plot(betapost[, 2],xlab = '',ylab = '',main = 'Beta2', type = 'l')
+```
+![](https://github.com/user-attachments/assets/ea7251c7-5642-4539-a3ab-3cb2e8bc9c7c)
+
+```R
+
+# auto correlation plot
+
+par(mfrow=c(1,3))
+acf(lambdapost,xlab = '',ylab = '',main = 'lambda', type = "correlation") 
+
+acf(betapost[,1],xlab = '',ylab = '',main = 'Beta1', type = "correlation") 
+
+acf(betapost[,2],xlab = '',ylab = '',main = 'Beta2', type = "correlation") 
+
+```
+![](https://github.com/user-attachments/assets/ab83a8da-5914-4569-b44e-81d8acf28f26)
+
 
 ## Reference
 * Alves, J. S., Bazán, J. L. and Arellano-Valle, R. B. (2023) Flexible cloglog links for binomial regression models as
